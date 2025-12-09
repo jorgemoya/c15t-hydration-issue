@@ -4,6 +4,7 @@ import "@/makeswift/components";
 import "./globals.css";
 import { MakeswiftProvider } from "@/makeswift/provider";
 import { getSiteVersion } from "@makeswift/runtime/next/server";
+import ConsentManager from "./consent-manager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,8 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MakeswiftProvider siteVersion={await getSiteVersion()}>
-        {children}
+          <ConsentManager>{children}</ConsentManager>
         </MakeswiftProvider>
-
       </body>
     </html>
   );
